@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import './reusable_card.dart';
+import '../widgets/reusable_card.dart';
+import '../widgets/sex_card.dart';
 
 const double bottomContainerHeight = 70.0;
 const bottomContainerColor = Color(0xFFEB1555);
@@ -15,7 +17,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('BMI CALCULATOR')),
+        title: const Center(child: Text('BMI CALCULATOR')),
       ),
       body: Column(
         children: <Widget>[
@@ -23,10 +25,20 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(
+                  cardChild: const sexCard(
+                    icon: FontAwesomeIcons.mars,
+                    text: 'MALE',
+                  ),
+                ),
               ),
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(
+                  cardChild: const sexCard(
+                    icon: FontAwesomeIcons.venus,
+                    text: 'FEMALE',
+                  ),
+                ),
               ),
             ],
           )),
@@ -47,7 +59,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Container(
             color: bottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             height: bottomContainerHeight,
             width: double.infinity,
           ),
