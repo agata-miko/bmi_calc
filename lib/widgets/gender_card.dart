@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
-class sexCard extends StatelessWidget {
+class genderCard extends StatelessWidget {
   final IconData icon;
   final String text;
-  const sexCard({required this.icon, required this.text});
+  const genderCard({required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,7 @@ class sexCard extends StatelessWidget {
         ),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Color(0xFF8D8E98),
-          ),
+          style: kLabelTextStyle,
         ),
       ],
     );
