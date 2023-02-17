@@ -10,7 +10,7 @@ enum Gender {
   female,
 }
 
-double height = 120;
+int height = 120;
 
 class InputPage extends StatefulWidget {
   @override
@@ -88,16 +88,26 @@ class _InputPageState extends State<InputPage> {
                       ),
                     ],
                   ),
-                  Slider(
-                    value: height,
-                    min: 120,
-                    max: 220,
-                    divisions: 100,
-                    onChanged: (double value) {
-                      setState(() {
-                        height = value;
-                      });
-                    },
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Colors.white,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 14),
+                        thumbColor: Color(0xFFEB1555),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 28),
+                        overlayColor: Color(0xFFEB1555).withOpacity(0.2)),
+                    child: Slider(
+                      inactiveColor: Color(0xFF8D8E98),
+                      value: height.toDouble(),
+                      min: 120,
+                      max: 220,
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value.round();
+                        });
+                      },
+                    ),
                   )
                 ],
               ),
