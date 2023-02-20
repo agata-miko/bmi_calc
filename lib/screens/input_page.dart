@@ -5,6 +5,9 @@ import '../widgets/reusable_card.dart';
 import '../widgets/gender_card.dart';
 import '../constants.dart';
 import '../widgets/round_icon_button.dart';
+import '../widgets/bottom_button.dart';
+import '../calculator_brain.dart';
+import '../screens/results_page.dart';
 
 enum Gender {
   male,
@@ -197,21 +200,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, 'results_page');
+          BottomButton(
+            text: 'CALCULATE',
+            route: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    bmiResults: calc.calculateBMI() as String,
+                    resultText: calc.getResult() as String,
+                    interpretation: calc.getInterpretation() as String,
+                  ),
+                ),
+              );
             },
-            child: Container(
-              child: Text(
-                'CALCULATE',
-                style: kLabelTextStyle,
-                textAlign: TextAlign.center,
-              ),
-              color: kBottomContainerColor,
-              margin: const EdgeInsets.only(top: 10),
-              height: kBottomContainerHeight,
-              width: double.infinity,
-            ),
           ),
         ],
       ),

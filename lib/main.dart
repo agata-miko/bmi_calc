@@ -11,7 +11,7 @@ class BMICalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        'results_page': (context) => ResultsPage(),
+        'input_page': (context) => InputPage(),
       },
       theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(color: Colors.black),
